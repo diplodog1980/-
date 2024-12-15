@@ -1,0 +1,39 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JavaScript Tasks</title>
+</head>
+<body>
+    <script>
+        // Задание 1
+        let number = prompt("Введите любое число:");
+
+        // Задание 2
+        let num1 = parseFloat(prompt("Введите первое число для калькулятора:"));
+        let num2 = parseFloat(prompt("Введите второе число для калькулятора:"));
+
+        let sum = num1 + num2;
+        let subtract = num1 - num2;
+        let multiply = num1 * num2;
+        let divide = num1 / num2;
+
+        alert("Результаты операций:\n" +
+              "Сложение: " + sum + "\n" +
+              "Вычитание: " + subtract + "\n" +
+              "Умножение: " + multiply + "\n" +
+              "Деление: " + divide);
+
+        // Задание 3
+        let result = prompt("Задумайте число, умножьте его на 2 и прибавьте 7.\nВведите полученный результат:");
+        let guessedNumber = (result - 7) / 2;
+        alert("Вы задумали число: " + guessedNumber);
+
+        // Задание 4
+        let name = prompt("Введите ваше имя:");
+        let birthYear = parseInt(prompt("Введите год вашего рождения:"));
+        let age = new Date().getFullYear() - birthYear;
+        document.write(name + ": " + age);
+    </script>
+</body>
+</html>

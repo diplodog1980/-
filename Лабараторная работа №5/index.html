@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Документ</title>
+    <script>
+        // 1. Функции калькулятора
+const add = (a, b) => a + b;
+const subtract = (a, b) => a - b;
+const multiply = (a, b) => a * b;
+const divide = (a, b) => b !== 0 ? a / b : "Нельзя делить на ноль";
+
+// 2. Проверка условий теста
+const checkTestConditions = function(test) {
+    if (test.score >= 90) return "Отлично";
+    else if (test.score >= 70) return "Хорошо";
+    else if (test.score >= 50) return "Удовлетворительно";
+    else return "Не сдано";
+};
+
+// 3. Проверка палиндрома
+const checkPalindrome = (surname) => {
+    const processed = surname.toLowerCase().replace(/\s/g, '');
+    return processed === processed.split('').reverse().join('');
+};
+
+// 4. Вычисление среднего значения массива
+const calculateAverage = (arr) => arr.reduce((a, b) => a + b, 0) / arr.length;
+
+// 5. Калькулятор дней до Нового года
+const daysUntilNewYear = () => {
+    const today = new Date();
+    const newYear = new Date(today.getFullYear() + 1, 0, 1);
+    return Math.ceil((newYear - today) / (1000 * 60 * 60 * 24));
+};
+
+// 6. Пустая стрелочная функция
+const emptyFunction = () => undefined;
+
+// 7. Операции с массивами
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+const sumArray = (arr) => arr.reduce((a, b) => a + b, 0);
+const getEvenNumbers = (arr) => arr.filter(num => num % 2 === 0);
+const multiplyByTwo = (arr) => arr.map(num => num * 2);
+
+// 8. Фильтр электронной почты
+const emails = [
+    'test@gmail.com',
+    'user@yahoo.com',
+    'admin@hotmail.com',
+    'info@mail.ru'
+];
+
+const filterEmails = (emailArray, searchTerm) => 
+    emailArray.filter(email => email.toLowerCase().includes(searchTerm.toLowerCase()));
+
+document.addEventListener('DOMContentLoaded', () => {
+    const resultsHTML = `
+        <div class="results">
+            <h3>1. Результаты калькулятора:</h3>
+            <p>Сложение (5 + 3): ${add(5, 3)}</p>
+            <p>Вычитание (10 - 4): ${subtract(10, 4)}</p>
+            <p>Умножение (6 * 7): ${multiply(6, 7)}</p>
+            <p>Деление (15 / 3): ${divide(15, 3)}</p>
+
+            <h3>2. Результат проверки теста:</h3>
+            <p>Тест с оценкой 85: ${checkTestConditions({score: 85})}</p>
+
+            <h3>3. Результаты проверки палиндрома:</h3>
+            <p>"Маракулин": ${checkPalindrome("Маракулин")}</p>
+            <p>"радар": ${checkPalindrome("радар")}</p>
+
+            <h3>4. Результат среднего значения массива:</h3>
+            <p>Среднее значение [1,2,3,4,5]: ${calculateAverage([1,2,3,4,5])}</p>
+
+            <h3>5. Дней до Нового года:</h3>
+            <p>${daysUntilNewYear()} дней</p>
+
+            <h3>7. Результаты операций с массивом:</h3>
+            <p>Исходный массив: ${numbers.join(', ')}</p>
+            <p>Сумма массива: ${sumArray(numbers)}</p>
+            <p>Четные числа: ${getEvenNumbers(numbers).join(', ')}</p>
+            <p>Умножено на 2: ${multiplyByTwo(numbers).join(', ')}</p>
+
+            <h3>8. Фильтр электронной почты:</h3>
+            <input type="text" id="emailSearch" placeholder="Поиск писем...">
+            <div id="emailList"></div>
+        </div>
+    `;
+    document.body.innerHTML += resultsHTML;
+
+    const searchInput = document.getElementById('emailSearch');
+    const emailList = document.getElementById('emailList');
+
+    const updateEmailList = (filteredEmails) => {
+        emailList.innerHTML = filteredEmails.map(email => `<div>${email}</div>`).join('');
+    };
+
+    searchInput.addEventListener('input', (e) => {
+        const filtered = filterEmails(emails, e.target.value);
+        updateEmailList(filtered);
+    });
+
+    updateEmailList(emails);
+});
+    </script>
+    
+</head>
+<body>
+    
+</body>
+</html>

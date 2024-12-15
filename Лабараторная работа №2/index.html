@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Задачи JavaScript</title>
+</head>
+<body>
+    <h2>1. Счет от 1 до 10:</h2>
+    <div id="counting"></div>
+
+    <h2>2. Программа Вечеринки:</h2>
+    <button onclick="partyTime()">Начать Вечеринку</button>
+    <div id="party"></div>
+
+    <h2>3. Вычисление Факториала (для числа 15):</h2>
+    <div id="factorial"></div>
+
+    <h2>4. Проверка Палиндрома для "Иванов":</h2>
+    <div id="palindrome"></div>
+
+    <h2>5. Простые Числа до 15:</h2>
+    <div id="primes"></div>
+
+    <script>
+        // Задача 1: Счет от 1 до 10
+        let countResult = "";
+        for(let i = 1; i <= 10; i++) {
+            countResult += i + " ";
+        }
+        document.getElementById("counting").innerHTML = countResult;
+
+        // Задача 2: Программа вечеринки
+        function partyTime() {
+            let result = "";
+            let continue_party = true;
+            while(continue_party) {
+                let answer = prompt("Еще по одной?");
+                if(answer === "1") {
+                    continue_party = false;
+                    result += "Вечеринка окончена!";
+                }
+            }
+            document.getElementById("party").innerHTML = result;
+        }
+
+        // Задача 3: Факториал числа 15
+        function factorial(n) {
+            let result = 1;
+            for(let i = 2; i <= n; i++) {
+                result *= i;
+            }
+            return result;
+        }
+        document.getElementById("factorial").innerHTML = "Факториал числа 15 равен: " + factorial(15);
+
+        // Задача 4: Проверка палиндрома
+        function isPalindrome(str) {
+            str = str.toLowerCase();
+            return str === str.split('').reverse().join('');
+        }
+        document.getElementById("palindrome").innerHTML = 
+            "Является ли 'Иванов' палиндромом? " + (isPalindrome("Иванов") ? "Да" : "Нет");
+
+        // Задача 5: Простые числа до 15
+        function getPrimes(n) {
+            let primes = [];
+            for(let i = 2; i <= n; i++) {
+                let isPrime = true;
+                for(let j = 2; j < i; j++) {
+                    if(i % j === 0) {
+                        isPrime = false;
+                        break;
+                    }
+                }
+                if(isPrime) primes.push(i);
+            }
+            return primes;
+        }
+        document.getElementById("primes").innerHTML = 
+            "Простые числа до 15: " + getPrimes(15).join(", ");
+    </script>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script> 
+    //Задание 2 
+    function isPalindrome(str) {
+        str = str.toLowerCase().replace(/[^а-яa-z0-9]/g, '');
+        return str === str.split('').reverse().join('');
+    }
+    function replaceNegatives(arr) {
+        return arr.map(num => num < 0 ? num * num : num);
+    }
+    
+    // Задание 3
+    let numbers = [-4, 5, -6, 8, -9, 1, -3, 7, -2, 10, -11];
+    console.log("Исходный массив:", numbers);
+    console.log("Измененный массив:", replaceNegatives(numbers));
+    
+    // Задание 4
+    class User {
+        constructor(name) {
+            this.name = name;
+        }
+        
+        displayName() {
+            console.log("Имя пользователя:", this.name);
+        }
+    }
+    // Задание 5
+    class Message {
+        constructor(userName) {
+            this.userName = userName;
+        }
+        
+        showMessage() {
+            let message = 'Привет, ' + this.userName;
+            alert(message);
+        }
+    }
+    
+    let name = new Message('Вася');
+    name.showMessage();    
+
+    // Задание 6
+    let user = new User("Иван");
+    user.displayName();
+    
+    class ReverseNameUser {
+        constructor(name) {
+            this.name = name;
+        }
+        
+        displayReverseName() {
+            console.log("Перевернутое имя:", this.name.split('').reverse().join(''));
+        }
+    }
+    
+    let reverseUser = new ReverseNameUser("Иван");
+    reverseUser.displayReverseName();    
+    
+    
+    </script>
+    </head>
+<body>
+    
+</body>
+</html>
